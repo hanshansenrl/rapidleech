@@ -35,7 +35,7 @@ class rlRar {
 
 	function fix_pass($password = '') {
 		//$password fix/check
-		return ($password == '' ? '' : '-p' . escapeshellarg(stripslashes(($password))) . ' ');
+		return ($password == '' ? '' : '-p' . stripslashes(($password)) . ' ');
 	}
 
 	function check_numeric_opt(&$val, $max, $min=0) {
