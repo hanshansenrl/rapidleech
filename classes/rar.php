@@ -1,4 +1,5 @@
 <?php
+setlocale(LC_CTYPE, "en_US.UTF-8");
 
 class rlRar {
 	protected $filename, $rar_forbidden, $password, $rar_opts, $rar_descriptorspec, $rar_return, $rar_error, $rar_list, $debug, $rar_exec, $rar_version, $old_rar = true;
