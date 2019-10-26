@@ -18,8 +18,8 @@ class dl_free_fr extends DownloadClass {
         is_present($page, "Appel incorrect.", "Incorrect link.");
         $cookie = GetCookies($page);
         if (!preg_match('@type=\"hidden\" name=\"file\" value=\"([^<>\"]*?)\"@', $page, $dl)) html_error("Error: Download link not found!");
-        $dlink = "http://dl.free.fr/getfile.pl?file=";
-        $dlink .= $dlink[1]; 
+        $dlink = "http://dl.free.fr/getfile.pl?send=Valider+et+t%C3%A9l%C3%A9charger+le+fichier&file=";
+        $dlink .= $dl[1]; 
         //$filename = basename(parse_url($dlink, PHP_URL_PATH));
         $this->RedirectDownload($dlink, "download", $cookie, 1, $link);
         exit();
