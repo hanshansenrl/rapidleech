@@ -17,10 +17,11 @@ class dl_free_fr extends DownloadClass {
         is_present($page, "Erreur 404 - Document non trouv&eacute;", "The file could not be found. Please check the download link.");
         is_present($page, "Appel incorrect.", "Incorrect link.");
         $cookie = GetCookies($page);
-        if (!preg_match('@<a style="text-decoration: underline" id="link" href="(http(s)?:\/\/[^|\r|\n|"]+)">@', $page, $dl)) html_error("Error: Download link not found!");
-        $dlink = trim($dl[1]);
-        $filename = basename(parse_url($dlink, PHP_URL_PATH));
-        $this->RedirectDownload($dlink, $filename, $cookie, 0, $link);
+        if (!preg_match('@type=\"hidden\" name=\"file\" value=\"([^<>\"]*?)\"@', $page, $dl)) html_error("Error: Download link not found!");
+        $dlink = "http://dl.free.fr/getfile.pl?file=";
+        $dlink .= $dlink[1]; 
+        //$filename = basename(parse_url($dlink, PHP_URL_PATH));
+        $this->RedirectDownload($dlink, "download", $cookie, 1, $link);
         exit();
     }
 }
